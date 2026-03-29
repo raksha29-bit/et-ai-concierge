@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Briefcase, Info, TrendingUp, HandHeart } from "lucide-react";
 
-export default function ConciergeGreeting({ onProceed }) {
+export default function ConciergeGreeting({ onProceed, isChatActive }) {
   const chips = [
     { label: "Start Investing", icon: Briefcase },
     { label: "Compare Loans", icon: HandHeart },
@@ -48,21 +48,23 @@ export default function ConciergeGreeting({ onProceed }) {
           })}
         </div>
 
-        <div className="flex flex-wrap gap-4 mt-2">
-          <button 
-            onClick={() => onProceed("Start standard onboarding")}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20"
-          >
-            Proceed with Chat
-            <ArrowRight size={18} />
-          </button>
-          <button 
-            onClick={() => {}}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-medium hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-colors"
-          >
-            Stop
-          </button>
-        </div>
+        {!isChatActive && (
+          <div className="flex flex-wrap gap-4 mt-2">
+            <button 
+              onClick={() => onProceed("Start standard onboarding")}
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20"
+            >
+              Proceed with Chat
+              <ArrowRight size={18} />
+            </button>
+            <button 
+              onClick={() => {}}
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-medium hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-colors"
+            >
+              Stop
+            </button>
+          </div>
+        )}
       </div>
     </motion.div>
   );

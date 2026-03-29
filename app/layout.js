@@ -19,6 +19,7 @@ export const metadata = {
 import TopBar from "@/components/TopBar";
 import BottomNav from "@/components/BottomNav";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { UserProfileProvider } from "@/components/UserProfileContext";
 
 export default function RootLayout({ children }) {
   return (
@@ -29,11 +30,13 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TopBar />
-          <main className="flex-1 pt-16 pb-20 flex flex-col">
-            {children}
-          </main>
-          <BottomNav />
+          <UserProfileProvider>
+            <TopBar />
+            <main className="flex-1 pt-16 pb-20 flex flex-col">
+              {children}
+            </main>
+            <BottomNav />
+          </UserProfileProvider>
         </ThemeProvider>
       </body>
     </html>
