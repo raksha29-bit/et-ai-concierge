@@ -15,7 +15,7 @@ export default function ChatUI({ initialMessage, onBack }) {
   // Manual state for the input field to prevent "undefined" errors
   const [input, setInput] = useState("");
   
-  // Reverting to @ai-sdk/react and destructuring explicitly
+  // Using useChat from @ai-sdk/react with local state for input stability
   const { messages, isLoading, append, handleSubmit } = useChat({
     api: '/api/chat',
     body: {
